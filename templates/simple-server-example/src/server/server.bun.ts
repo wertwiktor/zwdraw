@@ -52,6 +52,7 @@ const server = Bun.serve<
 	null
 >({
 	port: PORT,
+	hostname: '0.0.0.0', // Expose on all network interfaces
 	fetch(req) {
 		try {
 			return router.fetch(req).then(corsify)
@@ -90,4 +91,5 @@ const server = Bun.serve<
 	},
 })
 
-console.log(`Listening on localhost:${server.port}`)
+console.log(`Listening on 0.0.0.0:${server.port}`)
+console.log(`Server accessible at: http://0.0.0.0:${server.port}`)
